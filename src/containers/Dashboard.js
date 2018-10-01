@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import Aux from '../hoc/Auxx/Aux';
+import Aux from '../hoc/Auxx/auxx';
 import RecipeList from '../components/RecipeList/RecipeList';
 import Button from '../components/Button/Button';
 
