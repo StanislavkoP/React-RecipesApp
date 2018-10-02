@@ -6,7 +6,6 @@
 	border-bottom: 1px solid white;
 	background-color: transparent;
     outline: none;
-    height: 3rem;
     width: 100%;
     margin: 0 0 8px 0;
     -webkit-box-shadow: none;
@@ -17,4 +16,8 @@
     transition: border .3s, -webkit-box-shadow .3s;
     transition: box-shadow .3s, border .3s;
     transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.527);
 }

@@ -1,0 +1,18 @@
+
+
+.navItem a{
+	display: inline-block;
+	color: white;
+	padding: 12px;
+	text-decoration: none;
+}
+
+.navItem a:hover{
+	text-decoration: underline;
+}
+
+.navItem a.active {
+
+	background-color: #26a69a;
+
+}

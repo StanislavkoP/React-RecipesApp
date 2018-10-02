@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-	recipes: []
+	recipes: [],
+	isLoaded: false
 };
 
 const addRecipe = (state, action) => {
@@ -11,18 +12,18 @@ const addRecipe = (state, action) => {
 	}
 };
 
-const loadRecipeSucces = (state, action) => {
-	console.log(action.data);
+const loadRecipesSucces = (state, action) => {
 	return {
 		...state,
-		recipes: state.recipes.concat(action.data)
+		recipes: [...action.data],
+		isLoaded: true,
 	}
 }
 
 const reducer = ( state = initialState, action) => {
     switch ( action.type ) {
         case actionTypes.ADD_RECIPE: return addRecipe( state, action );
-        case actionTypes.LOAD_RECIPES_SUCCESS: return loadRecipeSucces( state, action );
+        case actionTypes.LOAD_RECIPES_SUCCESS: return loadRecipesSucces( state, action );
         default: return state;
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-/* import classes from './Input.css' */
+import  './Textarea.css';
 
 const Textarea = (props) => (
 	<textarea
