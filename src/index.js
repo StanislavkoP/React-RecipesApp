@@ -9,9 +9,11 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk'
 
 import Dashboard from './state/reducers/dashboard';
+import Edit from './state/reducers/edit';
 
 const rootReducer = combineReducers({
-	dashboard: Dashboard
+	dashboard: Dashboard,
+	edit: Edit
 });
 
 const composeEnhancers = process.env.NODE_ENV === "development" ?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
