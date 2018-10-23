@@ -11,7 +11,18 @@
     cursor: pointer;
 }
 
-.AddRecipe {
+.btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed
+}
+
+.btn:disabled:hover {
+    transform: none
+}
+
+
+.AddRecipe,
+.Auth  {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
     margin-bottom: 12px;
@@ -19,7 +30,54 @@
     text-transform: uppercase;
 }
 
-.AddRecipe:hover {
+.AddRecipe:hover,
+.Auth:hover {
     background-color: #2EE59D;
+    transform: translateY(-7px);
+}
+
+.Auth {
+    margin-top: 14px;
+    width: 100%
+}
+
+.AddIngredient {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    margin-bottom: 12px;
+    background-color: #be42d4;
+    text-transform: uppercase;
+}
+
+.AddIngredient:hover {
+    background-color: #dc16ff;
+    transform: translateY(-7px);
+}
+
+.DeleteRecipe {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    margin-bottom: 12px;
+    background-color: #d62744;
+    text-transform: uppercase;
+}
+
+.DeleteRecipe:hover {
+    background-color: #ff131e;
+    transform: translateY(-7px);
+}
+
+.BackToDashboard
+{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    margin-bottom: 12px;
+    background-color: #5627d6;
+    text-transform: uppercase;
+}
+
+.BackToDashboard:hover
+ {
+    background-color: #4208ff;
     transform: translateY(-7px);
 }

@@ -1,0 +1,99 @@
+.ingredientElement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    border-bottom: 1px solid white;
+    padding: 10px 0;
+}
+
+.ingredientElement label {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 53px);
+    cursor: pointer;
+}
+
+.ingridientText {
+    width: 100%;
+    line-height: 25px;
+    font-size: 1.3rem;
+    padding-left: 36px;
+    word-break: break-word;
+    text-align: center;
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+    margin: 0;
+}
+
+[type="checkbox"]+span {
+    position: relative;
+    max-width: 184px;
+    line-height: 25px;
+    font-size: 1.3rem;
+    padding-left: 28px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+}
+
+
+[type="checkbox"]+span::before {
+    content: '';
+    display: block;
+    border: 2px solid white;
+    width: 22px;
+    height: 22px;
+    left: 0;
+    position: absolute;
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    z-index: 1;
+}
+
+[type="checkbox"]:checked+span::before {
+    border: 2px solid #ab47bc;
+    background-color: #ab47bc;
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+
+}
+
+[type="checkbox"]+span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+    z-index: 1;
+    border-color: transparent;
+}
+
+[type="checkbox"]:checked+span::after {
+    top: 3px;
+    left: 2px;
+    width: 8px;
+    height: 13px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    -webkit-transform: rotateZ(37deg);
+    transform: rotateZ(37deg);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;
+
+}
+
+.removeIngredient{
+    width: 28px;
+    height: 28px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}

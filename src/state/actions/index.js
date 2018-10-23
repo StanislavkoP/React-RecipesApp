@@ -4,5 +4,7 @@ export {
 } from './dashboard';
 
 export {
-	loadRecipe,
-} from './edit';
+	onAuth,
+	onAuthLogOut,
+	checkAuthLogOut
+} from './auth';

@@ -12,18 +12,12 @@ export const addRecipe = () => {
 	const newRecipe = {
 		title: 'Без названия',
 		guide: '',
-		ingredients: [
-			{
-				name: 'Potato',
-				existence: true,
-			}
-		]
+		ingredients: []
 	}
 
 	return dispatch => {
 		axios.post('https://react-recipes-app-596c7.firebaseio.com/recipes.json', newRecipe)
 			.then(response => {
-				console.log(response);
 				dispatch( addRecipeSucces({...newRecipe, id: response.data.name}) )
 			})
 			.catch(error => {
