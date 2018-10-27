@@ -115,7 +115,7 @@ class Edit extends Component {
 		this.setState({
 			isLoaded: false
 		})
-		return axios.patch(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.state.recipeId}.json`, this.state.recipe)
+		return axios.patch(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json`, this.state.recipe)
 			.then(response => {
 				this.setState({
 					isLoaded: true
