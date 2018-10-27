@@ -129,7 +129,7 @@ class Edit extends Component {
 
 
 	deleteRecipe = () => {
-		axios.delete(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.state.recipeId}.json`)
+		axios.delete(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json`)
 		.then(response => {
 			this.props.history.push('/')
 		})
@@ -324,7 +324,8 @@ class Edit extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		dashboardRecipes: state.dashboard.recipes
+		dashboardRecipes: state.dashboard.recipes,
+		userId: state.auth.userId
 	}
 }
 
