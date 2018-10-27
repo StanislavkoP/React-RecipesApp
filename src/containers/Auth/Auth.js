@@ -57,7 +57,7 @@ class Auth extends Component {
 	onSubmitForm = () => {
 		const {nameUser, passwordUser, switchSign} = this.state;
 		
-		this.props.onAuth(nameUser, passwordUser, switchSign)
+		this.props.onAuth(this.state.inputs.email.value, passwordUser, switchSign)
 	}
 
 	render () {
