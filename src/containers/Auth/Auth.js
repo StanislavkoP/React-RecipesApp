@@ -12,8 +12,23 @@ class Auth extends Component {
 
 	state = {
 		switchSign: true,
+		inputs: {
+			email: {
+				value: '',
+				validation: {
+					required: true,
+					pattern: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+                },
+                valid: false,
+                touched: false
+			} 
+		},
 		nameUser: '',
 		passwordUser: '',
+	}
+
+	checkValidation( ) {
+		console.log('object');
 	}
 
 	switchSign = () => {
@@ -25,11 +40,23 @@ class Auth extends Component {
 	}
 
 	onChangeName = (event) => {
-		this.setState({nameUser: event.target.value})
+		this.setState({
+			inputs: {
+				...this.state.inputs,
+				email: {
+					...this.state.inputs.email,
+					value: event.target.value,
+/* 					touched: true,
+ *//* 					valid: this.checkValidation(event.target.value, this.state.inputs.email.validation)
+ */				}
+			},
+
+		})
 	}
 
 	onSubmitForm = () => {
 		const {nameUser, passwordUser, switchSign} = this.state;
+		
 		this.props.onAuth(nameUser, passwordUser, switchSign)
 	}
 
@@ -41,7 +68,7 @@ class Auth extends Component {
 					<p className={classes.authContainerTitle}>{ this.state.switchSign ? "Вход:"  : "Регистрация:" }</p>
 					<label className={classes.authContainerItem}>
 						<div>Логин:</div>
-						<Input typeInput="text" value={this.state.nameUser} changed={ (event) => this.onChangeName(event)}/>
+						<Input typeInput="text" value={this.state.inputs.email.value} changed={ (event) => this.onChangeName(event)}/>
 					</label>
 					<label className={classes.authContainerItem}>
 						<div>Пароль:</div>

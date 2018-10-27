@@ -7,9 +7,10 @@ const onAuthStart = () => {
 		type: actionsType.ON_AUTH_START
 	}
 }
-const onAuthSuccess = () => {
+const onAuthSuccess = (userId) => {
 	return {
-		type: actionsType.ON_AUTH_SUCCESS
+		type: actionsType.ON_AUTH_SUCCESS,
+		userId: userId
 	}
 }
 
@@ -40,10 +41,13 @@ export const onAuth = (email, password, typeSign) => {
 		}
 		axios.post(linkSign, authData)
 			.then(response => {
+				console.log(response)
+				const userId = response.data.localId;
 				const expirationTime = new Date( new Date().getTime() + response.data.expiresIn * 1000 );
 				localStorage.setItem('token', response.data.idToken);
 				localStorage.setItem('expirationTime', expirationTime);
-				dispatch( onAuthSuccess() );
+				localStorage.setItem('userId', userId);
+				dispatch( onAuthSuccess(userId) );
 				dispatch( inTimeAuthLogOut(response.data.expiresIn) );
 			})
 			.catch(err => {
@@ -58,6 +62,7 @@ export const onAuth = (email, password, typeSign) => {
 export const onAuthLogOut = () => {
 	localStorage.removeItem('token');
 	localStorage.removeItem('expirationTime');
+	localStorage.removeItem('userId');
 
 	return {
 		type: actionsType.ON_AUTH_LOG_OUT
@@ -67,7 +72,7 @@ export const onAuthLogOut = () => {
 export const checkAuthLogOut = () => {
 	return dispatch => {
 		const token = localStorage.getItem('token');
-
+		const userId = localStorage.getItem('userId');
 		if (!token) {
 			dispatch( onAuthLogOut() )
 		} else {
@@ -75,7 +80,7 @@ export const checkAuthLogOut = () => {
 			if (expirationTime <= new Date()) {
 				dispatch( onAuthLogOut() );
 			} else {
-				dispatch(onAuthSuccess());
+				dispatch(onAuthSuccess(userId));
 				dispatch( inTimeAuthLogOut((expirationTime.getTime() - new Date().getTime()) / 1000 ) );
 			}
 		}

@@ -8,7 +8,7 @@ const addRecipeSucces = (newRecipe) => {
 	}
 }
 
-export const addRecipe = () => {
+export const addRecipe = (userId) => {
 	const newRecipe = {
 		title: 'Без названия',
 		guide: '',
@@ -16,7 +16,7 @@ export const addRecipe = () => {
 	}
 
 	return dispatch => {
-		axios.post('https://react-recipes-app-596c7.firebaseio.com/recipes.json', newRecipe)
+		axios.post(`https://react-recipes-app-596c7.firebaseio.com/recipes/${userId}.json`, newRecipe)
 			.then(response => {
 				dispatch( addRecipeSucces({...newRecipe, id: response.data.name}) )
 			})
@@ -34,9 +34,9 @@ const loadRecipesSucces = data => {
 	}
 }
 
-export const loadRecipes = () => {
+export const loadRecipes = (userId) => {
 	return dispatch => {
-		axios.get('https://react-recipes-app-596c7.firebaseio.com/recipes.json')
+		axios.get(`https://react-recipes-app-596c7.firebaseio.com/recipes/${userId}.json`)
 			.then(response => {
 
 				let recipesList = [];

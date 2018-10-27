@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+	userId: null,
 	loading: null,
 	isAuthed: false,
 };
@@ -15,6 +16,7 @@ const onAuthStart = (state, action) => {
 const onAuthSuccess = (state, action) => {
 	return {
 		...state,
+		userId: action.userId,
 		loading: false,
 		isAuthed: true
 	}
