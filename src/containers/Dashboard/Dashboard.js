@@ -11,7 +11,8 @@ import * as actions from '../../state/actions/index';
 class Dashboard extends Component {
 
 	componentWillMount () {
-		this.props.loadRecipes();
+		this.props.loadRecipes(this.props.userId);
+		
 	}
 	
 	render () {
@@ -23,7 +24,7 @@ class Dashboard extends Component {
 					<RecipeList recipes={this.props.recipes}/>
 					<Button
 						classes={'AddRecipe'}
-						clicked={() => this.props.addRecipe()}
+						clicked={() => this.props.addRecipe( this.props.userId )}
 					>
 						Добавить рецепт
 					</Button>
@@ -41,19 +42,20 @@ class Dashboard extends Component {
 	}
 }
 
-const stateToProps = (state) => {
+const mapStateToProps = (state) => {
 	return {
 		recipes: state.dashboard.recipes,
-		isLoaded: state.dashboard.isLoaded
+		isLoaded: state.dashboard.isLoaded,
+		userId: state.auth.userId
 	}
 	
 }
 
-const dispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		addRecipe: () => dispatch( actions.addRecipe() ),
-		loadRecipes: () => dispatch( actions.loadRecipes() )
+		addRecipe: (userId) => dispatch( actions.addRecipe(userId) ),
+		loadRecipes: (userId) => dispatch( actions.loadRecipes(userId) )
 	}
 }
 
-export default connect(stateToProps, dispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

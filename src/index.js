@@ -16,10 +16,28 @@ const rootReducer = combineReducers({
 	auth: Auth
 });
 
-const composeEnhancers = process.env.NODE_ENV === "development" ?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
+const composeEnhancers = process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose
+
+const configurateStore = (initialState = {}) => {
+	const middleWares = [
+		thunk
+	];
+
+	const enchansers = [
+		applyMiddleware(...middleWares)
+	];
+
+	const store = createStore(
+		rootReducer,
+		initialState,
+		composeEnhancers( ...enchansers )
+	)
+
+	return store
+}
 
 
-const store = createStore(rootReducer, composeEnhancers( applyMiddleware(thunk) ));
+const store = configurateStore({});
 
 ReactDOM.render(
 	<Provider store={store}>
