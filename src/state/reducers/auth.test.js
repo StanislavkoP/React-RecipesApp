@@ -9,7 +9,7 @@ describe('auth', function () {
 		})
 	});
 
-	it('should return true if user is authed', function () {
+	it('should return isAuthed=true if user is authed', function () {
 		expect(reducer({
 			loading: null,
 			isAuthed: false,
