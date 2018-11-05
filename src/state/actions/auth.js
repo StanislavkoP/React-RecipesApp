@@ -14,6 +14,14 @@ const onAuthSuccess = (userId) => {
 	}
 }
 
+const onAuthFailed = err => {
+
+	return {
+		type: actionsType.ON_AUTH_FAILED,
+		error: err
+	}
+}
+
 const inTimeAuthLogOut = (sessionTime) => {
 	return dispatch => {
 		setTimeout(() => {
@@ -41,7 +49,6 @@ export const onAuth = (email, password, typeSign) => {
 		}
 		axios.post(linkSign, authData)
 			.then(response => {
-				console.log(response)
 				const userId = response.data.localId;
 				const expirationTime = new Date( new Date().getTime() + response.data.expiresIn * 1000 );
 				localStorage.setItem('token', response.data.idToken);
@@ -51,7 +58,9 @@ export const onAuth = (email, password, typeSign) => {
 				dispatch( inTimeAuthLogOut(response.data.expiresIn) );
 			})
 			.catch(err => {
-				console.log(err);
+				const responseMessage = err.response;
+
+				dispatch( onAuthFailed(responseMessage.data.error.message) )
 			})
 		;
 	}
