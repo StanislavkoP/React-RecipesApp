@@ -29,3 +29,10 @@
 	padding: 3px;
 	color: white;
 }
+
+.authError {
+	margin: 12px 0;
+	color: red;
+	font-size: 18px;
+	font-weight: 300;
+}
