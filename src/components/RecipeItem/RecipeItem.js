@@ -6,6 +6,7 @@ const checkCountExistenceIngredients = (listIngredients) => {
 
 	let existenceIngredientsString;
 	let filteredListInredients;
+
 	if ( listIngredients !== undefined ) {
 		filteredListInredients = listIngredients.filter(ingredient => ingredient.existence === true);
 		
@@ -15,7 +16,7 @@ const checkCountExistenceIngredients = (listIngredients) => {
 	}
 
 
-	if ( (listIngredients.length === filteredListInredients.length) && (filteredListInredients > 0 && listIngredients.length > 0) ) {
+	if ( (listIngredients.length === filteredListInredients.length) && (filteredListInredients.length > 0 && listIngredients.length > 0) ) {
 		existenceIngredientsString = 'У вас имеються все ингредиенты'
 	
 	} else if ( filteredListInredients.length > 0 && filteredListInredients.length < listIngredients.length ) {

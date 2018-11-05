@@ -1,4 +1,8 @@
 export const ADD_RECIPE = 'ADD_RECIPE';
+export const ADD_RECIPE_LOADING = 'ADD_RECIPE_LOADING';
+export const ADD_RECIPE_SUCCESS = 'ADD_RECIPE_SUCCESS';
+export const ADD_RECIPE_FAILED = 'ADD_RECIPE_FAILED';
+
 export const LOAD_RECIPES = 'LOAD_RECIPES';
 export const LOAD_RECIPES_SUCCESS = 'LOAD_RECIPES_SUCCESS';
 
@@ -12,4 +16,5 @@ export const CHANGE_TITLE = 'CHANGE_TITLE';
 
 export const ON_AUTH_START = 'ON_AUTH_START';
 export const ON_AUTH_SUCCESS = 'ON_AUTH_SUCCESS';
+export const ON_AUTH_FAILED = 'ON_AUTH_FAILED';
 export const ON_AUTH_LOG_OUT = 'ON_AUTH_LOG_OUT';

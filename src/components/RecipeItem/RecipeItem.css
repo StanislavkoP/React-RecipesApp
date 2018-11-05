@@ -1,10 +1,9 @@
-.RecipeList__RecipeItem:last-child {
-	border-bottom: none;
-}
-
-
 .RecipeList__RecipeItem {
 	border-bottom: 1px solid #e0e0e0;
+}
+
+.RecipeList__RecipeItem:last-child {
+	border-bottom: none;
 }
 
 .RecipeList__RecipeItem>a {

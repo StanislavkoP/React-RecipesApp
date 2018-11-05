@@ -9,7 +9,7 @@ const NavBar = (props) => (
 	<nav>
 		<ul className={classes.navList}>
 
-		 <NavItem link="/" exact={true}>{props.currentPath.indexOf('/recipe/') ? "Главная" : 'К главной'}</NavItem> 
+		 <NavItem link="/" exact={true}>{props.currentPath.indexOf('/recipe/') ? "Главная" : '← К главной'}</NavItem> 
 		
 		 {props.isAuthed ? <NavItem link="/authLogOut">Выйти</NavItem> : <NavItem link="/auth">Войти</NavItem>}
 		</ul>
