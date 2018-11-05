@@ -53,7 +53,7 @@ class Edit extends Component {
 	}
 
 	loadRecipeFromDatabase = (idRecipe) => {
-		axios.get(`https://react-recipes-app-596c7.firebaseio.com/recipes/${idRecipe}.json`)
+		axios.get(`https://react-recipes-app-596c7.firebaseio.com/recipes/${idRecipe}.json?auth=WRocQv8wYnO9SMcPjJFWqqfnbrEp3h0tTGttOzy9`)
 			.then(response => {
 				this.setState({
 					recipe: response.data,
@@ -115,7 +115,7 @@ class Edit extends Component {
 		this.setState({
 			isLoaded: false
 		})
-		return axios.patch(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json`, this.state.recipe)
+		return axios.patch(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json?auth=WRocQv8wYnO9SMcPjJFWqqfnbrEp3h0tTGttOzy9`, this.state.recipe)
 			.then(response => {
 				this.setState({
 					isLoaded: true
@@ -129,7 +129,7 @@ class Edit extends Component {
 
 
 	deleteRecipe = () => {
-		axios.delete(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json`)
+		axios.delete(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json?auth=WRocQv8wYnO9SMcPjJFWqqfnbrEp3h0tTGttOzy9`)
 		.then(response => {
 			this.props.history.push('/')
 		})

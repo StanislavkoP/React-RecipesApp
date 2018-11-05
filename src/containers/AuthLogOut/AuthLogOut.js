@@ -7,7 +7,6 @@ import * as actionsType from '../../state/actions/index';
 class AuthLogOut extends Component {
 
 	componentDidMount () {
-		console.log('object')
 		this.props.onAuthLogOut()
 	}
 
