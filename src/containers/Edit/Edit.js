@@ -15,7 +15,7 @@ class Edit extends Component {
 	state = {
 		recipeId: null,
 		recipe: null,
-		valueIngredientName: '',
+		valueNewIngredientName: '',
 		isChanging: false,
 		isLoaded: false,
 		isChanged: false,
@@ -97,8 +97,7 @@ class Edit extends Component {
 
 	onWriteIngredientName = (event) => {
 		this.setState({
-			valueIngredientName: event.target.value,
-
+			valueNewIngredientName: event.target.value,
 		})
 	}
 
@@ -142,25 +141,32 @@ class Edit extends Component {
 
 	addIngredient = () => {
 		let listIngredients = this.state.recipe.ingredients;
+		const ingredientNameInputValue = this.state.valueNewIngredientName
 
-		if (listIngredients == (undefined || null)) {
+		if (listIngredients === undefined || null) {
 			listIngredients = []
 		};
 
-		this.setState({
-			recipe: {
-				...this.state.recipe,
-				ingredients: [
-					...listIngredients,
-					{
-						existence: false,
-						name: this.state.valueIngredientName,
-					}
-				]
-			},
-			valueIngredientName: '',
-			isChanged: true
-		});
+		
+		if ( ingredientNameInputValue.trim() !== '' ) {
+			this.setState({
+				recipe: {
+					...this.state.recipe,
+					ingredients: [
+						...listIngredients,
+						{
+							existence: false,
+							name: this.state.valueNewIngredientName,
+						}
+					]
+				},
+				valueNewIngredientName: '',
+				isChanged: true
+			});
+		 }
+
+
+
 	}
 
 	deleteIngredient = indexIngredient => {
@@ -269,7 +275,7 @@ class Edit extends Component {
 							padding: "6px"
 						}}
 						value = {
-							this.state.valueIngredientName
+							this.state.valueNewIngredientName
 						}
 						changed = {
 							(event) => this.onWriteIngredientName(event)
