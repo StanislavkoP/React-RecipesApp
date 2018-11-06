@@ -14,7 +14,7 @@ const IngredientsList = props => {
 		ingredient = props.ingredients.map((item, index) => (
 				<IngredientsItem 
 					deleteIngredient={() => props.deleteIngredient(index)}
-					key={item.name} name={item.name}
+					key={index} name={item.name}
 					existence={item.existence}
 					changeExistenceIngredient = { () => props.changeExistenceIngredient(item, index) }
 				/>
