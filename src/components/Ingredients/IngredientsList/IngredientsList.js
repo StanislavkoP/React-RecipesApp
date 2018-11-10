@@ -1,7 +1,8 @@
 import React from 'react';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
-import classes from './IngredintsList.css'
+import classes from './IngredintsList.css';
+import fadeClasses from '../../../App.css';
 import Aux from '../../../hoc/Auxx/auxx';
 import IngredientsItem from '../IngredientsItem/IngredientsItem';
 
@@ -17,10 +18,10 @@ const IngredientsList = props => {
 				key={index}
 				timeout={300}
 				classNames={{    
-					enter: classes.fadeEnter,
-					enterActive: classes.fadeEnterActive,
-					exit: classes.fadeExit,
-					exitActive: classes.fadeExitActive,}}
+					enter: fadeClasses.fadeEnter,
+					enterActive: fadeClasses.fadeEnterActive,
+					exit: fadeClasses.fadeExit,
+					exitActive: fadeClasses.fadeExitActive,}}
 		  	>
 				<IngredientsItem 
 					deleteIngredient={() => props.deleteIngredient(index)}

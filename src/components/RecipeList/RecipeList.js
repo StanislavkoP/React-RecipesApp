@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './RecipeList.css';
+import fadeClasses from '../../App.css';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 import RecipeItem from './RecipeItem/RecipeItem';
@@ -14,8 +15,8 @@ const RecipeList = (props) => (
 						key={recipe.id}
 						timeout={300}
 						classNames={{
-							enter: classes.fadeEnter,
-							enterActive: classes.fadeEnterActive,
+							enter: fadeClasses.fadeEnter,
+							enterActive: fadeClasses.fadeEnterActive,
 						}}
 					>
 						<RecipeItem 
