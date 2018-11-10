@@ -52,7 +52,7 @@ class Edit extends Component {
 
 	}
 
-	loadRecipeFromDatabase = (idRecipe) => {
+	loadRecipeFromDatabase(idRecipe) {
 		axios.get(`https://react-recipes-app-596c7.firebaseio.com/recipes/${idRecipe}.json?auth=WRocQv8wYnO9SMcPjJFWqqfnbrEp3h0tTGttOzy9`)
 			.then(response => {
 				this.setState({
@@ -67,13 +67,13 @@ class Edit extends Component {
 
 
 
-	isChanging = (event) => {
+	isChanging() {
 		this.setState({
 			isChanging: false
 		})
 	}
 
-	changeTitle = (event) => {
+	changeTitle (event) {
 		this.setState({
 			recipe: {
 				...this.state.recipe,
@@ -85,7 +85,7 @@ class Edit extends Component {
 
 	}
 
-	changeGuide = (event) => {
+	changeGuide (event) {
 		this.setState({
 			recipe: {
 				...this.state.recipe,
@@ -95,13 +95,13 @@ class Edit extends Component {
 		})
 	}
 
-	onWriteIngredientName = (event) => {
+	onWriteIngredientName(event) {
 		this.setState({
 			valueNewIngredientName: event.target.value,
 		})
 	}
 
-	saveRecipe = () => {
+	saveRecipe() {
 		this.requestSaveChanges().then( () => {
 			this.setState({
 				isChanged: false
@@ -127,7 +127,7 @@ class Edit extends Component {
 	}
 
 
-	deleteRecipe = () => {
+	deleteRecipe() {
 		axios.delete(`https://react-recipes-app-596c7.firebaseio.com/recipes/${this.props.userId}/${this.state.recipeId}.json?auth=WRocQv8wYnO9SMcPjJFWqqfnbrEp3h0tTGttOzy9`)
 		.then(response => {
 			this.props.history.push('/')
@@ -139,7 +139,7 @@ class Edit extends Component {
 
 	}
 
-	addIngredient = () => {
+	addIngredient() {
 		let listIngredients = this.state.recipe.ingredients;
 		const ingredientNameInputValue = this.state.valueNewIngredientName
 
@@ -169,7 +169,7 @@ class Edit extends Component {
 
 	}
 
-	deleteIngredient = indexIngredient => {
+	deleteIngredient(indexIngredient) {
 		const filteredIngredients = this.state.recipe.ingredients.filter((elem, index) => {
 			return index !== indexIngredient
 		});
@@ -185,8 +185,8 @@ class Edit extends Component {
 		});
 	}
 
-	back = () => {
-		if(this.state.isChanged) {
+	back() {
+		if (this.state.isChanged) {
 			let saveChanges = window.confirm('Сохранить изменения?');
 			if(saveChanges === true) {
 				this.requestSaveChanges()
@@ -207,7 +207,7 @@ class Edit extends Component {
 		}
 	}
 
-	changeExistenceIngredient = (ingredient, indexIngredient) => {
+		changeExistenceIngredient(ingredient, indexIngredient) {
 		const newIngredient = {existence: !ingredient.existence, name: ingredient.name}
 
 		const newListIngredients = [...this.state.recipe.ingredients];

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import * as actions from '../../state/actions/index';
+import { CSSTransition} from 'react-transition-group';
 
 import classes from './Auth.css';
 import Button from '../../components/Button/Button';
@@ -55,7 +56,7 @@ class Auth extends Component {
 	}
 
 
-	hundlerValidationForm = () => {
+	hundlerValidationForm () {
 		const isEmailValidded = this.state.inputs.email.valid.isValid;
 		const isPasswordValidded = this.state.inputs.password.valid.isValid;
 
@@ -107,7 +108,7 @@ class Auth extends Component {
 		};
 	}
 
-	switchSign = () => {
+	switchSign () {
 		this.setState({switchSign: !this.state.switchSign})
 	}
 
@@ -127,7 +128,7 @@ class Auth extends Component {
 		return errorMessage;
 	}
 
-	onChangePassword = (event) => {
+	onChangePassword (event) {
 		const inputValue = event.target.value;
 		const validationRules = this.state.inputs.password.validation;
 		const validationResults = this.checkValidation(inputValue, validationRules);
@@ -150,7 +151,7 @@ class Auth extends Component {
 		}) 
 	}
 
-	onChangeName = (event) => {
+	onChangeName  (event)  {
 		const inputValue = event.target.value;
 		const validationRules = this.state.inputs.email.validation;
 		const validationResults = this.checkValidation(inputValue, validationRules);
@@ -173,7 +174,7 @@ class Auth extends Component {
 		})
 	}
 
-	onSubmitForm = () => {
+	onSubmitForm () {
 		const switchSign = this.state.switchSign;
 		const name = this.state.inputs.email.value;
 		const password = this.state.inputs.password.value;
@@ -229,7 +230,19 @@ class Auth extends Component {
 
 		return (
 			<div>
-				{ form }
+				<CSSTransition
+					in={true}
+					appear={true}
+					timeout={900}
+					classNames={{
+						appear: classes.fadeEnter,
+						appearActive: classes.fadeEnterActive,
+						enter: classes.fadeEnter,
+						enterActive: classes.fadeEnterActive,
+					}}
+				>
+					{ form }
+				</CSSTransition>
 				{ authRedirectPath }
 			</div>
 			

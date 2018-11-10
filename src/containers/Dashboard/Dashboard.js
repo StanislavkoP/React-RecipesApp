@@ -24,12 +24,13 @@ class Dashboard extends Component {
 		if(this.props.isLoaded) {
 			listRecipes = (
 				<React.Fragment>
-					{this.props.recipes.length === 0 ? <p style={{fontSize: '20px'}}>Добавьте себе новых рецептов</p> : <RecipeList recipes={this.props.recipes}/> }
+					{ this.props.recipes.length === 0 ? <p style={{fontSize: '20px'}}>Добавьте себе новых рецептов</p> : <RecipeList recipes={this.props.recipes}/> }
 					
-					{this.props.loading ? <CircularSpinner/> : null}
+					{ this.props.loading ? <CircularSpinner/> : null }
+
 					<Button
-						classes={'AddRecipe'}
-						clicked={() => this.props.addRecipe( this.props.userId )}
+						classes={ 'AddRecipe' }
+						clicked={ () => this.props.addRecipe( this.props.userId ) }
 					>
 						Добавить рецепт
 					</Button>
